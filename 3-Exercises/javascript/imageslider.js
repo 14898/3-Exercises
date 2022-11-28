@@ -1,25 +1,24 @@
 function prevImage()
 {
     picNow = document.getElementById("pic").src;
-    if(picNow.includes("Landscape-2"))
-    {
-       document.getElementById("pic").src = "/Images/Landscape-1.jpg"
-    }
-    else if(picNow.includes("Landscape-3"))
-    {
-        document.getElementById("pic").src = "/Images/Landscape-2.jpg"
-    }
+    changePic(picNow, -1);
 }
 
 function nextImage()
 {
     picNow = document.getElementById("pic").src;
-    if(picNow.includes("Landscape-2"))
+    changePic(picNow, 1);
+}
+
+function changePic(currentPic, amount)
+{
+    images = document.querySelectorAll("img");
+    picNow = picNow.substring(currentPic.length - 5, currentPic.length - 4);
+    picNumber = parseInt(picNow) + amount;
+    pic = "/Images/Landscape-" + (picNumber) + ".jpg";
+
+    if(picNumber > 0 && picNumber < 4)
     {
-       document.getElementById("pic").src = "/Images/Landscape-3.jpg"
-    }
-    else if(picNow.includes("Landscape-1"))
-    {
-        document.getElementById("pic").src = "/Images/Landscape-2.jpg"
+        document.getElementById("pic").src = pic;
     }
 }
